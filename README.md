@@ -1,106 +1,98 @@
 # n8n-ai-news-curator
 
-# 📰 Daily AI News Digest (n8n + Gemini)
+📰 **Daily AI News Digest (n8n + Gemini)**
 
-Automação criada com **n8n** que coleta notícias via **RSS do portal G1 (Economia e Tecnologia)**, utiliza a **IA Gemini (Google)** para selecionar e resumir as notícias mais relevantes e envia automaticamente um **resumo diário por e-mail**, todos os dias às **06:00 da manhã**.
+Automação desenvolvida com **n8n** que coleta notícias via **RSS do portal G1**, processa o conteúdo com a **IA Gemini (Google)** para selecionar e resumir as notícias mais relevantes de **tecnologia e economia**, e envia automaticamente um **resumo diário por e-mail** às **06:00 da manhã**.
 
-Projeto focado em **produtividade, curadoria de informação e uso prático de IA em automações reais**.
+Projeto focado em **produtividade, curadoria inteligente de informações e aplicação prática de IA em automações reais**.
 
+---
 
 ## 🚀 Funcionalidades
 
 - ⏰ Execução automática diária via **Schedule Trigger**
-- 🌐 Coleta de notícias via **RSS Feed**
-- 🧠 Curadoria inteligente com **Gemini (LLM)**
-- ✂️ Seleção automática das notícias mais relevantes
-- 📝 Resumos curtos e objetivos (até 50 palavras)
-- 📬 Envio automático para o **Gmail**
-- 📊 Organização em **Tech** e **Economia**
-- 📄 Formatação em **Markdown**, pronta para leitura no e-mail
+- 🌐 Coleta de notícias por **RSS Feed**
+- 🧠 Análise e curadoria com **Gemini (LLM)**
+- ✂️ Seleção das notícias mais relevantes
+- 📝 Resumos objetivos com limite de 50 palavras
+- 📊 Organização por categorias: **Tech** e **Economia**
+- 📄 Formatação em **Markdown**, otimizada para e-mail
+- 📬 Envio automático via **Gmail**
 
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **n8n** – Plataforma de automação low-code
-- **Google Gemini API** – Processamento e resumo das notícias
-- **RSS Feed (G1 Globo)** – Fonte de dados
-- **Gmail API** – Envio automático de e-mails
-- **Markdown** – Formatação do resumo diário
+- **Google Gemini API** – Processamento e resumo de conteúdo
+- **RSS Feed (G1 Globo)** – Fonte das notícias
+- **Gmail API** – Envio de e-mails
+- **Markdown** – Estruturação do conteúdo
 
+---
 
 ## 🔄 Fluxo da Automação
 
-1. **Schedule Trigger**
-   - Dispara diariamente às 06:02
+1. **Schedule Trigger**  
+   Executa o fluxo diariamente às 06:02.
 
-2. **RSS Read**
+2. **RSS Read**  
+   Coleta notícias dos feeds:
    - Economia: `https://g1.globo.com/rss/g1/economia/`
-   - Tecnologia/Carros: `https://g1.globo.com/rss/g1/carros/`
+   - Tecnologia: `https://g1.globo.com/rss/g1/carros/`
 
-3. **Limit**
-   - Limita a quantidade de notícias analisadas
+3. **Limit**  
+   Restringe a quantidade de notícias processadas.
 
-4. **Merge + Split Out**
-   - Une os feeds e prepara os dados (título, conteúdo e link)
+4. **Merge + Split Out**  
+   Unifica os feeds e extrai título, conteúdo e link.
 
-5. **Aggregate**
-   - Consolida todas as notícias em um único payload
+5. **Aggregate**  
+   Consolida todas as notícias em um único payload.
 
-6. **Gemini (LLM)**
-   - Analisa as notícias
-   - Seleciona no máximo **3 mais relevantes**
-   - Gera um resumo estruturado em Markdown
+6. **Gemini (LLM)**  
+   Analisa o conteúdo, seleciona até **3 notícias relevantes** e gera um resumo estruturado em **Markdown**.
 
-7. **Gmail**
-   - Envia automaticamente o resumo diário para o e-mail configurado
+7. **Gmail**  
+   Envia automaticamente o resumo diário para o e-mail configurado.
 
-## 🧠 Prompt Utilizado na IA
+---
 
-A IA é instruída a atuar como um **editor de notícias especializado em tecnologia e economia**, com regras claras:
+## 🧠 Estratégia de Prompt
 
-- Selecionar apenas notícias relevantes
-- Limitar o resumo a 50 palavras por notícia
-- Separar em seções: **Tech** e **Economia**
-- Gerar saída pronta para e-mail em **Markdown**
-- Incluir links diretos para as notícias originais
+A IA atua como um **editor especializado em tecnologia e economia**, seguindo as diretrizes:
 
-
-## 📅 Exemplo de Assunto do E-mail
-
+- Priorizar apenas notícias relevantes
+- Limitar os resumos a 50 palavras
+- Separar o conteúdo em **Tech** e **Economia**
+- Gerar saída pronta para leitura em e-mail
+- Incluir links diretos para as fontes originais
 
 ---
 
 ## 📌 Objetivo do Projeto
 
-Este projeto foi desenvolvido com foco em:
-
-- Demonstrar **automação real com IA**
-- Aplicar **LLMs em cenários práticos**
-- Criar um fluxo reutilizável e escalável
-- Servir como **projeto de portfólio** em automação, IA e engenharia de software
+- Demonstrar o uso de **IA aplicada à automação**
+- Integrar **LLMs em fluxos reais**
+- Criar uma solução reutilizável e escalável
+- Compor um **projeto de portfólio** em automação, IA e engenharia de software
 
 ---
 
-## ⚠️ Observações Importantes
+## ⚠️ Observações
 
-- As credenciais da **API Gemini** e do **Gmail** não estão incluídas no repositório.
+- As credenciais da **Google Gemini API** e do **Gmail** não estão incluídas no repositório.
 - É necessário configurar:
   - Google Gemini API
   - OAuth do Gmail
-- O fluxo pode ser facilmente adaptado para:
+- O fluxo pode ser adaptado para:
   - Outras fontes RSS
-  - Outros horários
-  - Envio para Slack, WhatsApp ou Telegram
+  - Diferentes horários de execução
+  - Integrações com Slack, WhatsApp ou Telegram
 
 ---
 
 ## 📄 Licença
 
-Este projeto é de uso educacional e pode ser adaptado livremente.
+Projeto de uso educacional, com livre adaptação.
 
----
-
-## 👩‍💻 Autora
-
-Desenvolvido por **Isabelle Fernanda**  
-Estudante de Engenharia de Software | Automação | IA | Produtividade
